@@ -7,8 +7,7 @@ exports.getQuestions = (req, res) => {
       res.status(200).json(data[0][0].json_build_object);
     })
     .catch((err) => {
-      console.error('Unable to retrieve questions from the database: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -25,8 +24,7 @@ exports.getAnswers = (req, res) => {
       res.status(200).json(result);
     })
     .catch((err) => {
-      console.error('Unable to retrieve answers from the database: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -37,8 +35,7 @@ exports.addQuestion = (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error('Unable to add question from the database: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -52,8 +49,7 @@ exports.addAnswer = (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error('Unable to add answer from the database: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -65,8 +61,7 @@ exports.markQuestionHelpful = (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error('Unable to mark question helpful: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -77,8 +72,7 @@ exports.reportQuestion = (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error('Unable to report question: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -89,8 +83,7 @@ exports.markAnswerHelpful = (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error('Unable to mark answer helpful: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }
 
@@ -101,7 +94,6 @@ exports.reportAnswer = (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error('Unable to report answer: ', err);
-      res.sendStatus(500);
+      res.status(500).send(err);
     })
 }

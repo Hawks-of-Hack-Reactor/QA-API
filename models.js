@@ -5,7 +5,7 @@ exports.getQuestions = (id) => {
   SELECT json_build_object('product_id', ${id}, 'results', array_to_json(array_agg(json_build_object('question_id', id, 'question_body', body, 'question_date', date_written, 'asker_name', asker_name, 'question_helpfulness', helpful, 'reported', reported, 'answers', (
     SELECT json_object_agg(id, tmp)
     FROM (
-    SELECT id as id, json_build_object('id', id, 'body', body, 'date', date_written, 'answerer_name', answerer_name,
+    SELECT id as id, json_build_object('id', id, 'body', body, 'date', to_char(to_timestamp(date_written::double precision/1000), 'YYYY-MM-DDThh24:mi:ss.msZ'), 'answerer_name', answerer_name,
     'helpfulness', helpful, 'photos', (
     SELECT array_to_json(array_agg(json_build_object('id', id, 'url', url)))
     FROM "Photos"
@@ -18,7 +18,7 @@ exports.getQuestions = (id) => {
 
 exports.getAnswers = (id) => {
   return db.query(`
-  SELECT array_to_json(array_agg(json_build_object('answer_id', id, 'body', body, 'date', date_written, 'answerer_name', answerer_name,
+  SELECT array_to_json(array_agg(json_build_object('answer_id', id, 'body', body, 'date', to_char(to_timestamp(date_written::double precision/1000), 'YYYY-MM-DDThh24:mi:ss.msZ'), 'answerer_name', answerer_name,
   'helpfulness', helpful, 'photos', (
   SELECT array_to_json(array_agg(json_build_object('id', id, 'url', url)))
   FROM "Photos"
@@ -86,7 +86,3 @@ exports.reportAnswer = (answer_id) => {
   WHERE id = ${answer_id}
   `);
 }
-
-// SELECT setval('photos_id_seq', (SELECT max(id) FROM "Photos"))
-// SELECT setval('answers_id_seq', (SELECT max(id) FROM "Answers"))
-// SELECT setval('questions_id_seq', (SELECT max(id) FROM "Questions"))

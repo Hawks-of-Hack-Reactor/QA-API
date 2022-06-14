@@ -24,10 +24,10 @@ export const options = {
 
 const baseUrl = "http://localhost:3000/qa"
 
-const generateId = () => Math.floor(Math.random() * (1000011 - 900000) + 900000);
+const generateId = () => Math.floor(Math.random() * 3518960);
 
 export default function () {
-  const url = `${baseUrl}/${generateId()}`;
+  const url = `${baseUrl}/questions/${generateId()}/answers`;
   const res = http.get(url);
   check(res, {
     'is status 200': (r) => r.status == 200,
