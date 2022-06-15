@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "PORT=3000 nodemon server.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
