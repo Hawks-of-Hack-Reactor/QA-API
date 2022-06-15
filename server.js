@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-app.get('/loaderio-383679a0950722bd0567f3a7ed6b04c6.txt', (req, res) => {
-  res.send('loaderio-383679a0950722bd0567f3a7ed6b04c6');
+app.get('/loaderio-02f6e42489552195c76ddc8d1cd7a626.txt', (req, res) => {
+  res.send('loaderio-02f6e42489552195c76ddc8d1cd7a626');
 });
 
 app.get('/qa/:product_id', controller.getQuestions);
