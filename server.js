@@ -1,6 +1,6 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 3000;
 const path = require('path');
 const controller = require('./controller.js');
 app.use(express.static('dist'));
@@ -23,6 +23,6 @@ app.put('/qa/answers/:answer_id/helpful', controller.markAnswerHelpful);
 app.put('/qa/answers/:answer_id/report', controller.reportAnswer);
 
 
-app.listen(port, () =>
+app.listen(process.env.PORT, () =>
   console.log(`Example app listening at http://localhost:${port}`)
 );
