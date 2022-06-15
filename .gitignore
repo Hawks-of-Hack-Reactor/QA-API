@@ -1,1 +1,5 @@
 node_modules
+.DS_Store
+
+SDC-DB-Server.pem
+SDC-Server.pem
