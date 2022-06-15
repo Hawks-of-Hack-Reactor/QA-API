@@ -6,7 +6,8 @@ const Promise = require('bluebird');
 
 const connection = new Sequelize('postgres', 'postgres', '5555', {
   host: '52.91.243.247',
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false,
 });
 
 connection.authenticate()
