@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
+app.get('/loaderio-383679a0950722bd0567f3a7ed6b04c6.txt', (req, res) => {
+  res.send('loaderio-383679a0950722bd0567f3a7ed6b04c6');
+});
+
 app.get('/qa/:product_id', controller.getQuestions);
 app.get('/qa/:question_id/answers', controller.getAnswers);
 app.post('/qa/questions', controller.addQuestion);
